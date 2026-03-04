@@ -1,3 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
-@plugin "daisyui";
+ @plugin "daisyui" {
+   themes: corporate --default, business --prefersdark ;
+ }
+
+ .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
