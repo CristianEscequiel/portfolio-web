@@ -1,0 +1,366 @@
+<div class="">
+  <nav id="nav" class="navbar container mx-auto px-10 sticky top-0 z-50 border-b border-base-200 bg-base-100 justify-between">
+    <span class="text-2xl font-semibold"><span class="font-extrabold text-primary">SC</span>_Dev</span>
+    <div class="grid grid-flow-col sm:text-sm gap-2 md:gap-4">
+      <a class="border-b border-transparent hover:border-accent lg:text-lg" href=" #about"> Sobre mi</a>
+      <a class="border-b border-transparent hover:border-accent lg:text-lg" href=" #experience"> Experiencia</a>
+      <a class="border-b border-transparent hover:border-accent lg:text-lg" href=" #contact"> Contacto</a>
+    </div>
+  </nav>
+
+  <div class=" scroll-smooth mx-auto">
+    <div class="btn btn-circle fixed right-6 bottom-6 z-50">
+      <a href=" #hero"><fa-icon [icon]="faArrowUp"></fa-icon></a>
+    </div>
+
+    <section id="hero" class="hero min-h-[calc(100vh-48px)] mx-auto">
+      <div class="hero-content flex-col lg:flex-row-reverse justify-center gap-10 lg:gap-20">
+        <img class="rounded-full w-80 h-80 lg:w-80 lg:h-80" src="profile2.jpg" alt="profile">
+        <div class="align-middle">
+          <h1 class="bg-linear-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent
+           text-6xl lg:text-8xl font-bold leading-tight pb-1">
+            Escequiel Argüello
+          </h1>
+          <h2 class="text-2xl lg:text-3xl text-secondary font-semibold"> {{'{'}} Full Stack Developer |
+            Frontend-Focused {{'}'}} </h2>
+          <p class="text-lg lg:text-2xl mt-2 py-1 line-clamp-6">
+            Construyo productos digitales con criterio técnico, enfoque en usuario.
+          </p>
+          <section class="flex flex-row gap-x-2 lg:gap-x-4 mt-4" id="social">
+            <a class="btn btn-primary p-0 text-3xl"
+              href="https://www.linkedin.com/in/cristian-arg%C3%BCello-18a1a31ab/"><fa-icon
+              [icon]="faLinkedinIn"
+              target="_blank"></fa-icon></a>
+            <a class="btn btn-primary text-3xl p-0 "><fa-icon [icon]="faGithub"></fa-icon></a>
+            <a class="btn btn-primary">Descargar CV</a>
+          </section>
+
+        </div>
+      </div>
+      <div class="hidden btn btn-circle animate-bounce md:flex absolute bottom-4">
+        <a href=" #about"><fa-icon [icon]="faChevronDown"></fa-icon></a>
+      </div>
+    </section>
+
+    <section class="container mx-auto mt-10 scroll-mt-20 px-10" id="about">
+      <h1 class="text-4xl lg:text-5xl text-center font-bold">Sobre mí</h1>
+      <p class="text-lg lg:text-2xl pt-10">
+        Hola, soy Escequiel. Técnico en Programación con experiencia en entornos industriales,
+        donde aprendí a trabajar con métricas, eficiencia y validación constante de datos.
+      </p><br>
+      <p class="text-lg lg:text-2xl">
+        Hoy me desempeño como Full Stack Developer con fuerte enfoque en frontend.
+        Me interesa construir interfaces claras y funcionales,
+        reduciendo la complejidad para que el producto sea intuitivo y útil desde el primer uso.
+      </p><br>
+      <p class="text-lg lg:text-2xl">
+        Desarrollo aplicaciones web pensadas para evolucionar,
+        priorizando arquitectura sostenible, performance y
+        decisiones técnicas alineadas con objetivos reales de negocio.
+      </p>
+    </section>
+
+    <section class="container mx-auto scroll-mt-20 mt-10 px-10 gap-x-4" id="experience">
+      <h1 class="text-4xl text-center font-bold pb-10">Experiencia</h1>
+      <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+
+        <!-- Analista de Mantenimiento -->
+        <li>
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-start mb-10 md:text-end">
+            <time class="font-mono italic">Nov 2024 – Sep 2025</time>
+            <div class="text-lg font-black">Analista de Mantenimiento</div>
+            <div class="font-semibold">Pirelli Argentina</div>
+            <p class="mt-2">
+              Automaticé KPIs productivos con Python e integré soluciones digitales
+              para mejorar eficiencia y visibilidad operativa.
+            </p>
+
+            <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
+              <span class="badge badge-outline">Python</span>
+              <span class="badge badge-outline">SQL</span>
+              <span class="badge badge-outline">Data Analysis</span>
+              <span class="badge badge-outline">Automatización</span>
+            </div>
+          </div>
+          <hr />
+        </li>
+
+        <!-- Full Stack Developer -->
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-end md:mb-10">
+            <time class="font-mono italic">Mar 2023 – Nov 2024</time>
+            <div class="text-lg font-black">Full Stack Developer</div>
+            <div class="font-semibold">Pirelli Argentina</div>
+            <p class="mt-2">
+              Implementé interfaces en Angular para visualizar informacion de la forma más eficiente. <br>
+              Desarrollé dashboards conectados a bases SQL para soporte en la toma de decisiones. <br>
+              Automaticé tareas repetitivas con Python reduciendo tiempos administrativos.
+            </p>
+
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="badge badge-outline">Angular</span>
+              <span class="badge badge-outline">TypeScript</span>
+              <span class="badge badge-outline">PostgreSQL</span>
+              <span class="badge badge-outline">Python</span>
+              <span class="badge badge-outline">REST APIs</span>
+            </div>
+          </div>
+          <hr />
+        </li>
+
+        <!-- Frontend Developer -->
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="timeline-start mb-10 md:text-end">
+            <time class="font-mono italic">Ago 2022 – Mar 2023</time>
+            <div class="text-lg font-black">Frontend Developer</div>
+            <div class="font-semibold">Pirelli Argentina</div>
+            <p class="mt-2">
+              Desarrollé interfaces web en Angular para proyectos internos de digitalización. <br>
+              Colaboré en mejoras de procesos y optimización de flujos internos.
+            </p>
+
+            <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
+              <span class="badge badge-outline">Angular</span>
+              <span class="badge badge-outline">TypeScript</span>
+              <span class="badge badge-outline">UI/UX</span>
+              <span class="badge badge-outline">Data Visualization</span>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <section id="projects" class="container mx-auto px-6 py-20 scroll-mt-20">
+  <div class="max-w-4xl mx-auto text-center mb-14">
+    <h2 class="text-4xl font-bold">Proyectos</h2>
+    <p class="mt-4 text-lg opacity-80">
+      Una selección de proyectos orientados a producto, con foco en frontend y experiencia full stack.
+    </p>
+  </div>
+
+  <!-- Grid escalable: hoy 2 cards, mañana agregás más y listo -->
+  <div class="grid gap-10 md:grid-cols-2">
+
+    <!-- Proyecto 1: Landing -->
+    <article class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300">
+      <figure class="aspect-video bg-base-300/40 flex items-center justify-center overflow-hidden">
+        <!-- Placeholder de imagen -->
+        <div class="opacity-60 text-sm">Imagen / Preview (coming soon)</div>
+      </figure>
+
+      <div class="card-body">
+        <h3 class="card-title text-2xl">Landing Portfolio</h3>
+        <p class="opacity-80">
+          Landing moderna y minimalista, enfocada en performance, responsive y una estética tipo producto SaaS.
+        </p>
+
+        <!-- Chips -->
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="badge badge-outline">Angular</span>
+          <span class="badge badge-outline">TailwindCSS</span>
+        </div>
+
+        <div class="card-actions mt-6 justify-between items-center">
+          <!-- Demo disabled + coming soon -->
+          <div class="flex items-center gap-3">
+            <button class="btn btn-primary btn-sm" disabled>Ver demo</button>
+            <span class="badge badge-ghost">Coming soon</span>
+          </div>
+
+          <!-- GitHub -->
+          <a
+            class="btn btn-outline btn-primary btn-sm"
+            href="https://github.com/TU_USUARIO/TU_REPO_LANDING"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Proyecto 2: Catálogo Full Stack -->
+    <article class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300">
+      <figure class="aspect-video bg-base-300/40 flex items-center justify-center overflow-hidden">
+        <div class="opacity-60 text-sm">Imagen / Preview (coming soon)</div>
+      </figure>
+
+      <div class="card-body">
+        <h3 class="card-title text-2xl">Catálogo E-commerce</h3>
+        <p class="opacity-80">
+          Catálogo con administración de productos y categorías. Front en Angular + Tailwind + DaisyUI, backend en NestJS,
+          persistencia en PostgreSQL y entorno dockerizado.
+        </p>
+
+        <!-- Chips -->
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="badge badge-outline">Angular</span>
+          <span class="badge badge-outline">TailwindCSS</span>
+          <span class="badge badge-outline">DaisyUI</span>
+          <span class="badge badge-outline">NestJS</span>
+          <span class="badge badge-outline">PostgreSQL</span>
+          <span class="badge badge-outline">Docker</span>
+        </div>
+
+        <div class="card-actions mt-6 justify-between items-center">
+          <div class="flex items-center gap-3">
+            <button class="btn btn-primary btn-sm" disabled>Ver demo</button>
+            <span class="badge badge-ghost">Coming soon</span>
+          </div>
+
+          <a
+            class="btn btn-outline btn-primary btn-sm"
+            href="https://github.com/TU_USUARIO/TU_REPO_CATALOGO"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+    </section>
+
+    <section class="container mx-auto scroll-mt-20 mt-20 px-6" id="stack">
+
+      <h1 class="text-4xl text-center font-bold mb-14">
+        Tecnologías
+      </h1>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-10 text-center">
+
+        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
+          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-orange-500"
+            [icon]="faHtml5"></fa-icon>
+          <span class="text-sm opacity-80 group-hover:opacity-100">HTML</span>
+        </div>
+
+        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
+          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-yellow-400" [icon]="faJs"></fa-icon>
+          <span class="text-sm opacity-80 group-hover:opacity-100">JavaScript</span>
+        </div>
+
+        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
+          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-blue-500" [icon]="faCss"></fa-icon>
+          <span class="text-sm opacity-80 group-hover:opacity-100">CSS</span>
+        </div>
+
+        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
+          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-sky-400"
+            [icon]="faTailwindCss"></fa-icon>
+          <span class="text-sm opacity-80 group-hover:opacity-100">Tailwind</span>
+        </div>
+
+        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
+          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-red-500"
+            [icon]="faAngular"></fa-icon>
+          <span class="text-sm opacity-80 group-hover:opacity-100">Angular</span>
+        </div>
+
+        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
+          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-blue-400"
+            [icon]="faPostgresql"></fa-icon>
+          <span class="text-sm opacity-80 group-hover:opacity-100">PostgreSQL</span>
+        </div>
+
+        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
+          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-green-500"
+            [icon]="faNodeJs"></fa-icon>
+          <span class="text-sm opacity-80 group-hover:opacity-100">NodeJS</span>
+        </div>
+
+        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
+          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-yellow-500"
+            [icon]="faPython"></fa-icon>
+          <span class="text-sm opacity-80 group-hover:opacity-100">Python</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="contact" class="container mx-auto px-6 py-20 scroll-mt-20">
+
+      <div class="max-w-3xl mx-auto text-center">
+
+        <h2 class="text-4xl font-bold mb-6">
+          Contactame
+        </h2>
+
+        <p class="text-lg opacity-80 mb-10">
+          Si te interesa trabajar juntos o querés conversar sobre producto, tecnología o nuevas ideas,
+          podés escribirme directamente.
+        </p>
+
+        <div class="flex flex-col items-center gap-6">
+
+          <div class="flex items-center gap-4 bg-base-200 px-6 py-4 rounded-xl border border-base-300
+               hover:border-primary transition duration-300 group">
+            <span id="emailText" class="text-lg font-medium select-all">
+              esce.arguello21@gmail.com
+            </span>
+
+            <button onclick="navigator.clipboard.writeText('esce.arguello21@gmail.com')"
+              class="btn btn-sm btn-primary transition duration-300">
+              Copiar
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <footer class="border-t border-base-300 mt-20 py-8">
+
+  <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-70">
+
+    <span>
+      © 2026 Escequiel Argüello
+    </span>
+
+    <div class="flex gap-6">
+      <a href=" #about" class="hover:text-primary transition">Sobre mi</a>
+      <a href=" #experience" class="hover:text-primary transition">Experiencia</a>
+      <a href=" #contact" class="hover:text-primary transition">Contacto</a>
+    </div>
+
+    <span>
+      Desarrollado con Angular & Tailwind
+    </span>
+
+  </div>
+
+</footer>
+
+</div>
