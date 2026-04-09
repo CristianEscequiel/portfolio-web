@@ -1,8 +1,15 @@
 <div class="">
+  <div class="toast toast-top toast-end z-[60] transition-opacity duration-300"
+    [class.opacity-0]="!showCopyToast" [class.pointer-events-none]="!showCopyToast">
+    <div class="alert alert-success">
+      <span>Email copiado</span>
+    </div>
+  </div>
+
   <nav
     class="navbar h-16 container mx-auto px-10 sticky top-0 z-50 border-b border-base-200 bg-base-100 justify-between">
     <span class="inline-flex items-center text-2xl font-semibold tracking-tight">
-      <span class="bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500
+      <span class="bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500
            bg-clip-text text-transparent font-extrabold">SC</span>
       <span class="opacity-70">_</span>
       <span class="font-semibold">Dev</span>
@@ -31,20 +38,25 @@
 
   <div class="mx-auto">
 
-    <section id="hero" class="hero min-h-[calc(100vh-4rem)] mx-auto">
+    <section id="hero" class="hero min-h-[calc(100vh-4rem)] scroll-mt-20 mx-auto">
       <div class="hero-content flex-col lg:flex-row-reverse justify-center gap-10 lg:gap-20">
         <img class="rounded-full w-80 h-80 lg:w-80 lg:h-80" src="profile2.jpg" alt="profile">
         <div class="align-middle">
-          <h1 class="bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500
-           bg-clip-text text-transparent
-           text-6xl lg:text-8xl font-bold leading-tight pb-1">
-            Escequiel Argüello
+          <h1 class="p-0 text-blue-400 font-bold
+           text-6xl lg:text-8xl opacity-80">
+          Escequiel <span class="text-secondary">Argüello</span>
           </h1>
-          <h2 class="text-2xl lg:text-3xl text-secondary font-semibold"> {{'{'}} Full Stack Developer |
-            Frontend-Focused {{'}'}} </h2>
+          <h2 class="text-2xl lg:text-3xl mt-4 text-secondary font-semibold"> Full Stack Developer con foco en Frontend </h2>
           <p class="text-lg lg:text-2xl mt-2 py-1 line-clamp-6">
-            Construyo productos digitales con criterio técnico, enfoque en usuario.
+            Desarrollo aplicaciones web enfocadas en producto, performance y experiencia de usuario.
           </p>
+          <p class="text-md lg:text-lg line-clamp-6 text-sm opacity-70"
+          >Angular · React · NestJS · PostgreSQL · Docker</p>
+          <section class="flex flex-row gap-x-2 lg:gap-x-4 mt-4" id="social">
+            <a class="btn btn-primary p-0 px-1" href="#projects">Ver proyectos</a>
+            <a class="btn btn-outline p-0 px-1 " href="#contact">Contactame</a>
+          </section>
+
           <section class="flex flex-row gap-x-2 lg:gap-x-4 mt-4" id="social">
             <a class="btn btn-primary p-0 text-3xl" href="https://www.linkedin.com/in/cristian-arg%C3%BCello-18a1a31ab/"
               target="_blank" rel="noopener noreferrer">
@@ -89,176 +101,211 @@
       </p>
     </section>
 
-    <section class="container mx-auto py-16 scroll-mt-20 px-10 reveal" id="experience">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl lg:text-5xl font-bold">Experiencia</h2>
-        <div class="w-24 h-1 bg-primary mx-auto mt-3 rounded"></div>
+<section class="container mx-auto py-16 scroll-mt-20 px-10 reveal" id="experience">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl lg:text-5xl font-bold">Experiencia</h2>
+    <div class="w-24 h-1 bg-primary mx-auto mt-3 rounded"></div>
+  </div>
+
+  <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+
+    <li>
+      <div class="timeline-middle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+          <path fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+            clip-rule="evenodd" />
+        </svg>
       </div>
-      <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+      <div class="timeline-start mb-10 md:text-end">
+        <time class="font-mono italic">Sep 2025 – Actualidad</time>
+        <div class="text-lg font-black">Full Stack Developer · Freelance</div>
+        <p class="mt-2">
+          Desarrollo soluciones web full stack, incluyendo catálogos tipo e-commerce,
+          APIs REST, autenticación y despliegue con Docker.
+        </p>
 
-        <li>
-          <div class="timeline-middle">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                clip-rule="evenodd" />
-            </svg>
-          </div>
-          <div class="timeline-start mb-10 md:text-end">
-            <time class="font-mono italic">Nov 2024 – Sep 2025</time>
-            <div class="text-lg font-black">Analista de Mantenimiento</div>
-            <div class="font-semibold">Pirelli Argentina</div>
-            <p class="mt-2">
-              Automaticé KPIs productivos con Python e integré soluciones digitales
-              para mejorar eficiencia y visibilidad operativa.
-            </p>
-
-            <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
-              <span class="badge badge-outline">Python</span>
-              <span class="badge badge-outline">SQL</span>
-              <span class="badge badge-outline">Data Analysis</span>
-              <span class="badge badge-outline">Automatización</span>
-            </div>
-          </div>
-          <hr />
-        </li>
-
-        <li>
-          <hr />
-          <div class="timeline-middle">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                clip-rule="evenodd" />
-            </svg>
-          </div>
-          <div class="timeline-end md:mb-10">
-            <time class="font-mono italic">Mar 2023 – Nov 2024</time>
-            <div class="text-lg font-black">Full Stack Developer</div>
-            <div class="font-semibold">Pirelli Argentina</div>
-            <p class="mt-2">
-              Implementé interfaces en Angular para visualizar informacion de la forma más eficiente. <br>
-              Desarrollé dashboards conectados a bases SQL para soporte en la toma de decisiones. <br>
-              Automaticé tareas repetitivas con Python reduciendo tiempos administrativos.
-            </p>
-
-            <div class="mt-3 flex flex-wrap gap-2">
-              <span class="badge badge-outline">Angular</span>
-              <span class="badge badge-outline">TypeScript</span>
-              <span class="badge badge-outline">PostgreSQL</span>
-              <span class="badge badge-outline">Python</span>
-              <span class="badge badge-outline">REST APIs</span>
-            </div>
-          </div>
-          <hr />
-        </li>
-
-        <li>
-          <hr />
-          <div class="timeline-middle">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-              <path fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                clip-rule="evenodd" />
-            </svg>
-          </div>
-          <div class="timeline-start mb-10 md:text-end">
-            <time class="font-mono italic">Ago 2022 – Mar 2023</time>
-            <div class="text-lg font-black">Frontend Developer</div>
-            <div class="font-semibold">Pirelli Argentina</div>
-            <p class="mt-2">
-              Desarrollé interfaces web en Angular para proyectos internos de digitalización. <br>
-              Colaboré en mejoras de procesos y optimización de flujos internos.
-            </p>
-
-            <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
-              <span class="badge badge-outline">Angular</span>
-              <span class="badge badge-outline">TypeScript</span>
-              <span class="badge badge-outline">UI/UX</span>
-              <span class="badge badge-outline">Data Visualization</span>
-            </div>
-          </div>
-        </li>
-
-      </ul>
-    </section>
-
-    <section id="projects" class="container mx-auto px-6 py-16 scroll-mt-20 reveal">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl lg:text-5xl font-bold">Proyectos</h2>
-        <div class="w-24 h-1 bg-primary mx-auto mt-3 rounded"></div>
+        <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
+          <span class="badge badge-outline">Angular</span>
+          <span class="badge badge-outline">NestJS</span>
+          <span class="badge badge-outline">PostgreSQL</span>
+          <span class="badge badge-outline">Docker</span>
+          <span class="badge badge-outline">React</span>
+        </div>
       </div>
-      <div class="grid gap-10 md:grid-cols-2">
-        <article class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300">
-          <figure class="aspect-video bg-base-300/40 flex items-center justify-center overflow-hidden">
-            <img src="Mi catalogo 03.jpg" alt="">
-          </figure>
+      <hr />
+    </li>
 
-          <div class="card-body">
-            <h3 class="card-title text-2xl">Catálogo E-commerce</h3>
-            <p class="opacity-80">
-              Catálogo con administración de productos y categorías. Front en Angular + Tailwind + DaisyUI, backend en
-              NestJS,
-              persistencia en PostgreSQL y entorno dockerizado.
-            </p>
-
-            <div class="mt-2 flex flex-wrap gap-2">
-              <span class="badge badge-outline">Angular</span>
-              <span class="badge badge-outline">TailwindCSS</span>
-              <span class="badge badge-outline">DaisyUI</span>
-              <span class="badge badge-outline">NestJS</span>
-              <span class="badge badge-outline">PostgreSQL</span>
-              <span class="badge badge-outline">Docker</span>
-            </div>
-
-            <div class="card-actions mt-6 justify-center items-center">
-              <div class="flex items-center gap-3">
-                <button class="btn btn-primary btn-sm" disabled>Ver demo</button>
-                <span class="badge badge-ghost">Coming soon</span>
-              </div>
-
-              <a class="btn btn-primary btn-sm" href="https://github.com/CristianEscequiel/mi-catalogo-online/"
-                target="_blank" rel="noopener noreferrer">
-                <fa-icon [icon]="faLink"></fa-icon>GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300">
-          <figure class="aspect-video bg-base-300/40 flex items-center justify-center overflow-hidden">
-            <img src="landing2.jpg" alt="langingpage">
-          </figure>
-
-          <div class="card-body">
-            <h3 class="card-title text-2xl">Landing BizData</h3>
-            <p class="opacity-80">
-              Landing page desarrollada para presentar los servicios de una empresa dedicada a la administración y
-              gestión de pequeños comercios.
-            </p>
-
-            <div class="mt-2 flex flex-wrap gap-2">
-              <span class="badge badge-outline">Angular</span>
-              <span class="badge badge-outline">TailwindCSS</span>
-            </div>
-
-            <div class="card-actions mt-6 justify-center items-center">
-
-              <div class="flex items-center gap-3">
-                <button class="btn btn-primary btn-sm" disabled>Ver demo</button>
-                <span class="badge badge-ghost">Coming soon</span>
-              </div>
-
-              <a class="btn btn-primary btn-sm" href="https://github.com/CristianEscequiel/landing-page-bzdt/"
-                target="_blank" rel="noopener noreferrer">
-                <fa-icon [icon]="faLink"></fa-icon>GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
+    <li>
+      <hr />
+      <div class="timeline-middle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+          <path fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+            clip-rule="evenodd" />
+        </svg>
       </div>
-    </section>
+      <div class="timeline-end md:mb-10">
+        <time class="font-mono italic">Nov 2024 – Sep 2025</time>
+        <div class="text-lg font-black">Software Developer</div>
+        <div class="font-semibold">Pirelli Argentina</div>
+        <p class="mt-2">
+          Desarrollé aplicaciones de monitoreo y reportes con foco en KPIs operativos,
+          visibilidad en tiempo real y análisis de datos productivos.
+        </p>
+
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="badge badge-outline">Python</span>
+          <span class="badge badge-outline">Pandas</span>
+          <span class="badge badge-outline">SQL</span>
+          <span class="badge badge-outline">KPIs</span>
+          <span class="badge badge-outline">Monitoreo</span>
+        </div>
+      </div>
+      <hr />
+    </li>
+
+    <li>
+      <hr />
+      <div class="timeline-middle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+          <path fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+            clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="timeline-start mb-10 md:text-end">
+        <time class="font-mono italic">Mar 2023 – Nov 2024</time>
+        <div class="text-lg font-black">Full Stack Developer</div>
+        <div class="font-semibold">Pirelli Argentina</div>
+        <p class="mt-2">
+          Construí aplicaciones internas con Angular, dashboards conectados a SQL
+          y automatizaciones con Python para optimizar procesos.
+        </p>
+
+        <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
+          <span class="badge badge-outline">Angular</span>
+          <span class="badge badge-outline">TypeScript</span>
+          <span class="badge badge-outline">PostgreSQL</span>
+          <span class="badge badge-outline">Python</span>
+          <span class="badge badge-outline">Dashboards</span>
+        </div>
+      </div>
+      <hr />
+    </li>
+
+    <li>
+      <hr />
+      <div class="timeline-middle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+          <path fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+            clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="timeline-end md:mb-10">
+        <time class="font-mono italic">Ago 2022 – Mar 2023</time>
+        <div class="text-lg font-black">Frontend Developer</div>
+        <div class="font-semibold">Pirelli Argentina</div>
+        <p class="mt-2">
+          Desarrollé interfaces en Angular para proyectos internos de digitalización,
+          mejorando flujos y experiencia de usuario.
+        </p>
+
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="badge badge-outline">Angular</span>
+          <span class="badge badge-outline">TypeScript</span>
+          <span class="badge badge-outline">UI/UX</span>
+          <span class="badge badge-outline">Digitalización</span>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
+<section id="projects" class="container mx-auto px-6 py-16 scroll-mt-20 reveal">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl lg:text-5xl font-bold">Proyectos</h2>
+    <div class="w-24 h-1 bg-primary mx-auto mt-3 rounded"></div>
+  </div>
+
+  <div class="grid gap-10 md:grid-cols-2">
+
+    <article class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300">
+      <figure class="aspect-video bg-base-300/40 flex items-center justify-center overflow-hidden">
+        <img src="Mi catalogo 03.jpg" alt="Catálogo Online Fullstack">
+      </figure>
+
+      <div class="card-body">
+        <h3 class="card-title text-2xl">Catálogo Online Fullstack</h3>
+        <p class="opacity-80">
+          Plataforma fullstack en producción para gestión y visualización de productos, con autenticación,
+          carrito de compras y panel administrativo.
+          Arquitectura desacoplada desarrollada con Angular y NestJS, persistencia en PostgreSQL
+          y despliegue dockerizado con dominio propio.
+        </p>
+
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="badge badge-outline">Angular</span>
+          <span class="badge badge-outline">TailwindCSS</span>
+          <span class="badge badge-outline">DaisyUI</span>
+          <span class="badge badge-outline">NestJS</span>
+          <span class="badge badge-outline">PostgreSQL</span>
+          <span class="badge badge-outline">Docker</span>
+        </div>
+
+        <div class="card-actions mt-6 justify-center items-center">
+          <div class="flex items-center gap-3">
+            <a class="btn btn-primary btn-sm" href="https://catalog.esceweb.com/home" target="_blank" rel="noopener noreferrer">
+              Ver demo
+            </a>
+            <span class="badge badge-success">En producción</span>
+          </div>
+
+          <a class="btn btn-primary btn-sm" href="https://github.com/CristianEscequiel/mi-catalogo-online/" target="_blank" rel="noopener noreferrer">
+            <fa-icon [icon]="faLink"></fa-icon>GitHub
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300">
+      <figure class="aspect-video bg-base-300/40 flex items-center justify-center overflow-hidden">
+        <img src="landing2.jpg" alt="Landing + catálogo estático en React">
+      </figure>
+
+      <div class="card-body">
+        <h3 class="card-title text-2xl">Landing + Catálogo Estático</h3>
+        <p class="opacity-80">
+          Solución frontend orientada a catálogos comerciales, desarrollada con React, TypeScript y Vite.
+          Diseño reutilizable con configuración dinámica de contenido y temas, optimizada para
+          rendimiento, escalabilidad visual y experiencia responsive.
+        </p>
+
+        <div class="mt-2 flex flex-wrap gap-2">
+          <span class="badge badge-outline">React</span>
+          <span class="badge badge-outline">TypeScript</span>
+          <span class="badge badge-outline">Vite</span>
+          <span class="badge badge-outline">TailwindCSS</span>
+          <span class="badge badge-outline">React Router</span>
+        </div>
+
+        <div class="card-actions mt-6 justify-center items-center">
+          <div class="flex items-center gap-3">
+            <button class="btn btn-primary btn-sm" disabled>Ver demo</button>
+            <span class="badge badge-ghost">Próximamente</span>
+          </div>
+
+          <a class="btn btn-primary btn-sm" href="https://github.com/CristianEscequiel/catalog-react" target="_blank" rel="noopener noreferrer">
+            <fa-icon [icon]="faLink"></fa-icon>GitHub
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
 
     <section id="contact" class="container mx-auto px-6 py-16 scroll-mt-20 reveal">
       <div class="text-center mb-12">
@@ -277,12 +324,13 @@
           <div class="flex items-center gap-4 bg-base-200 px-6 py-4 rounded-xl border border-base-300
                hover:border-primary transition duration-300 group">
             <span id="emailText" class="text-lg font-medium select-all">
-              esce.arguello21@gmail.com
+              {{ email }}
             </span>
 
-            <button onclick="navigator.clipboard.writeText('esce.arguello21@gmail.com')"
-              class="btn btn-sm btn-primary transition duration-300">
-              Copiar
+            <button type="button" (click)="copyEmail()" [disabled]="isCopying"
+              class="btn btn-sm btn-primary transition-all duration-300 min-w-28">
+              <fa-icon [icon]="isEmailCopied ? faCheck : faCopy"></fa-icon>
+              {{ isEmailCopied ? 'Copiado ✔' : 'Copiar' }}
             </button>
           </div>
 

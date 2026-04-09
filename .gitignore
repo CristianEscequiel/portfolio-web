@@ -28,6 +28,9 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
+#Docker
+docker-compose.yml
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/

@@ -1,6 +1,13 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faArrowUp  ,faChevronDown , faLink , faDownload} from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowUp,
+  faChevronDown,
+  faLink,
+  faDownload,
+  faCopy,
+  faCheck,
+} from '@fortawesome/free-solid-svg-icons';
 import {
         faGithub , faLinkedinIn,
         faJs ,faHtml5 ,
@@ -16,7 +23,7 @@ import {
   imports: [FontAwesomeModule],
   templateUrl: './landing.html',
 })
-export class Landing implements OnInit , AfterViewInit {
+export class Landing implements OnInit, AfterViewInit, OnDestroy {
   faArrowUp = faArrowUp;
   faGithub = faGithub;
   faLinkedinIn = faLinkedinIn;
@@ -31,6 +38,15 @@ export class Landing implements OnInit , AfterViewInit {
   faChevronDown = faChevronDown
   faLink = faLink
   faDownload = faDownload
+  faCopy = faCopy
+  faCheck = faCheck
+
+  readonly email = 'esce.arguello21@gmail.com';
+  isCopying = false;
+  isEmailCopied = false;
+  showCopyToast = false;
+
+  private copyFeedbackTimeout: ReturnType<typeof setTimeout> | null = null;
 
   theme: string = 'business'
 
@@ -69,6 +85,40 @@ ngAfterViewInit() {
   }, { threshold: 0.12 });
 
   items.forEach(el => io.observe(el));
+}
+
+async copyEmail() {
+  if (this.isCopying) {
+    return;
+  }
+
+  this.isCopying = true;
+
+  try {
+    await navigator.clipboard.writeText(this.email);
+    this.isEmailCopied = true;
+    this.showCopyToast = true;
+
+    if (this.copyFeedbackTimeout) {
+      clearTimeout(this.copyFeedbackTimeout);
+    }
+
+    this.copyFeedbackTimeout = setTimeout(() => {
+      this.isEmailCopied = false;
+      this.showCopyToast = false;
+      this.copyFeedbackTimeout = null;
+    }, 2000);
+  } catch (error) {
+    console.error('No se pudo copiar el email:', error);
+  } finally {
+    this.isCopying = false;
+  }
+}
+
+ngOnDestroy() {
+  if (this.copyFeedbackTimeout) {
+    clearTimeout(this.copyFeedbackTimeout);
+  }
 }
 
 }
