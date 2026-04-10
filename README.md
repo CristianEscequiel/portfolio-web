@@ -1,39 +1,43 @@
 # 🚀 Escequiel Argüello — Portfolio Web
 
-Landing page profesional desarrollada para presentar mi perfil como desarrollador, mi experiencia y los proyectos en los que trabajo.
+Landing page profesional desarrollada para presentar mi perfil como desarrollador, mi experiencia y los proyectos en producción.
 
-Este portfolio refleja mi enfoque en **productos digitales claros, mantenibles y centrados en el usuario**, combinando una base sólida en **frontend** con experiencia **full stack**.
+Este portfolio refleja mi enfoque en construir **productos digitales claros, mantenibles y orientados a resultados**, combinando especialización en **frontend** con experiencia **full stack**.
+
+🔗 Demo: https://esceweb.com  
+💻 Repo: https://github.com/CristianEscequiel/portfolio-web  
 
 ---
 
 ## 🧠 Stack
 
-![Angular](https://img.shields.io/badge/Angular-v20-red)
-![Tailwind](https://img.shields.io/badge/TailwindCSS-v4-38bdf8)
-![DaisyUI](https://img.shields.io/badge/DaisyUI-UI%20Components-purple)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178c6)
-![Node](https://img.shields.io/badge/Node.js-339933)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1)
+- Angular 20  
+- TailwindCSS  
+- DaisyUI  
+- TypeScript  
+- Node.js  
+- PostgreSQL  
+- Docker  
 
 ---
 
 ## 📌 Sobre el proyecto
 
-Este proyecto fue creado como **mi sitio personal y espacio de presentación profesional**.
+Este proyecto funciona como **mi espacio central de presentación profesional**.
 
-El objetivo es mostrar:
+Más allá de lo visual, está pensado como un producto:
 
-- Experiencia profesional  
-- Tecnologías que utilizo  
-- Proyectos desarrollados  
-- Mi forma de trabajar y enfoque en producto  
+- Muestra experiencia real en entornos productivos  
+- Expone proyectos deployados (no solo demos)  
+- Refleja decisiones de arquitectura y enfoque técnico  
 
-La web prioriza:
+Principios aplicados:
 
-- ⚡ Performance  
-- 🎨 Diseño minimalista  
-- 📱 Responsive design  
-- 🧱 Arquitectura simple y escalable  
+- ⚡ Performance first  
+- 🎨 UI clara y sin ruido  
+- 📱 Mobile-first  
+- 🧱 Escalabilidad simple  
+- 🔧 Mantenibilidad  
 
 ---
 
@@ -41,38 +45,17 @@ La web prioriza:
 
 - Landing moderna y responsive  
 - Navegación por secciones  
-- UI minimalista basada en **TailwindCSS + DaisyUI**  
+- UI basada en TailwindCSS + DaisyUI  
 - Sección de experiencia profesional  
-- Visualización del stack tecnológico  
-- Sección de proyectos con enlaces a repositorios  
+- Stack tecnológico visible  
+- Proyectos con foco en producto  
 - Información de contacto  
 
 ---
 
-## 🖥️ Demo
-
-**Próximamente disponible**
-
----
-
-## ⚙️ Instalación
-
-Clonar el repositorio:
-
-```bash
-git clone https://github.com/CristianEscequiel/portfolio-web
-
-cd portfolio-web
-
-npm install
-
-ng serve
-
-http://localhost:4200
+## 📂 Estructura
 
 ```
-📂 Estructura del proyecto
-
 src
  ├── app
  │   ├── page
@@ -85,28 +68,43 @@ src
  ├── styles.css
  ├── main.ts
  └── index.html
+```
 
- 🛣️ Roadmap
+---
 
-Próximas mejoras del proyecto:
+## ⚙️ Instalación
 
-- Deploy público del portfolio
+```bash
+git clone https://github.com/CristianEscequiel/portfolio-web
+cd portfolio-web
 
-- Animaciones con IntersectionObserver
+npm install
+ng serve
+```
 
-- Mejora de la sección de proyectos
+Abrir en:
 
-- Agregar nuevos proyectos full stack
+```
+http://localhost:4200
+```
 
+---
 
-👨‍💻 Autor
+## 🛣️ Roadmap
 
-Escequiel Argüello
+- Deploy continuo y mejoras de infraestructura  
+- Animaciones con IntersectionObserver  
+- Optimización mobile  
+- Mejora de sección proyectos  
+- Formulario de contacto  
+- Nuevos proyectos full stack  
 
-Full Stack Developer — Frontend Focused
+---
 
-LinkedIn
-https://www.linkedin.com/in/cristian-arg%C3%BCello-18a1a31ab/
+## 👨‍💻 Autor
 
-GitHub
-https://github.com/CristianEscequiel/
+**Escequiel Argüello**  
+Full Stack Developer — Frontend Focused  
+
+- LinkedIn: https://www.linkedin.com/in/cristian-arg%C3%BCello-18a1a31ab/  
+- GitHub: https://github.com/CristianEscequiel  
