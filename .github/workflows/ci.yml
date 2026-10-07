@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portfolio
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: portfolio/package-lock.json
+
+      - run: npm ci
+      # El runner de GitHub trae Chrome; ChromeHeadless evita abrir ventana.
+      - run: npx ng test --no-watch --browsers=ChromeHeadless
+      - run: npm run build -- --configuration production
+
+  # Publica la imagen en GHCR. Solo en push a main y solo si `build` terminó en verde.
+  docker:
+    needs: build
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # GHCR exige nombres en minúsculas; esta acción lo resuelve sola.
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=sha
+            type=raw,value=latest
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./portfolio
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # Despliega en el servidor: le pide al script restringido del VPS que use la imagen
+  # recién publicada (tag sha-xxxxxxx, el mismo que generó metadata-action).
+  deploy:
+    needs: docker
+    # DEPLOY_ENABLED (variable del repo) permite apagar el deploy hasta que el servidor esté listo.
+    if: github.event_name == 'push' && vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    # Un deploy a la vez por servicio; si llega otro push, espera (no se cancela a mitad).
+    concurrency:
+      group: deploy-portfolio
+      cancel-in-progress: false
+    steps:
+      - name: Desplegar en el servidor
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          # Huella del servidor fijada de antemano: sin StrictHostKeyChecking=no.
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          # El servidor ignora cualquier comando que no sea "<servicio> <tag>".
+          ssh -i ~/.ssh/id_deploy -o IdentitiesOnly=yes "root@$DEPLOY_HOST" "portfolio sha-${GITHUB_SHA::7}"
