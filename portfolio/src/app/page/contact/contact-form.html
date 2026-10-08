@@ -1,0 +1,113 @@
+<form
+  class="relative mx-auto flex w-full max-w-xl flex-col gap-4 text-left"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  novalidate
+>
+  <div class="flex flex-col gap-1">
+    <label for="contact-name" class="text-sm font-medium">Nombre</label>
+    <input
+      id="contact-name"
+      type="text"
+      formControlName="name"
+      autocomplete="name"
+      class="input input-bordered w-full"
+      [class.input-error]="fieldError('name')"
+      [attr.aria-invalid]="fieldError('name') ? 'true' : null"
+      [attr.aria-describedby]="fieldError('name') ? 'contact-name-error' : null"
+    />
+    @if (fieldError('name'); as message) {
+      <p id="contact-name-error" class="text-sm text-error">{{ message }}</p>
+    }
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label for="contact-email" class="text-sm font-medium">Email</label>
+    <input
+      id="contact-email"
+      type="email"
+      formControlName="email"
+      autocomplete="email"
+      inputmode="email"
+      class="input input-bordered w-full"
+      [class.input-error]="fieldError('email')"
+      [attr.aria-invalid]="fieldError('email') ? 'true' : null"
+      [attr.aria-describedby]="fieldError('email') ? 'contact-email-error' : null"
+    />
+    @if (fieldError('email'); as message) {
+      <p id="contact-email-error" class="text-sm text-error">{{ message }}</p>
+    }
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label for="contact-message" class="text-sm font-medium">Mensaje</label>
+    <textarea
+      id="contact-message"
+      formControlName="message"
+      rows="6"
+      class="textarea textarea-bordered w-full"
+      [class.textarea-error]="fieldError('message')"
+      [attr.aria-invalid]="fieldError('message') ? 'true' : null"
+      [attr.aria-describedby]="
+        fieldError('message')
+          ? 'contact-message-error contact-message-count'
+          : 'contact-message-count'
+      "
+    ></textarea>
+    <div class="flex items-start justify-between gap-4">
+      <div class="min-w-0">
+        @if (fieldError('message'); as message) {
+          <p id="contact-message-error" class="text-sm text-error">{{ message }}</p>
+        }
+      </div>
+      <p id="contact-message-count" class="shrink-0 text-xs opacity-70">
+        {{ messageLength() }} / {{ limits.messageMax }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Honeypot anti-spam: fuera de pantalla, sin foco por teclado y oculto para lectores de pantalla. -->
+  <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+    <label for="contact-hp">Dejá este campo vacío</label>
+    <input
+      id="contact-hp"
+      name="hp-field"
+      type="text"
+      formControlName="website"
+      tabindex="-1"
+      autocomplete="off"
+    />
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary w-full sm:w-auto sm:self-start"
+    [disabled]="isSending()"
+  >
+    @if (isSending()) {
+      <span class="loading loading-spinner loading-sm" aria-hidden="true"></span>
+      Enviando…
+    } @else {
+      Enviar mensaje
+    }
+  </button>
+
+  <div aria-live="polite" role="status">
+    @if (status() === 'success') {
+      <p class="rounded-lg border border-success p-3 text-success">
+        ¡Gracias! Recibí tu mensaje y te voy a responder por email.
+      </p>
+    }
+  </div>
+
+  <div role="alert">
+    @if (generalError(); as message) {
+      <p class="rounded-lg border border-error p-3 text-error">
+        {{ message }}
+        @if (showEmailFallback()) {
+          <a class="link font-medium" [href]="'mailto:' + contactEmail()">{{ contactEmail() }}</a>
+        }
+      </p>
+    }
+  </div>
+</form>
