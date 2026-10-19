@@ -122,7 +122,7 @@ export const PROJECTS: readonly ProjectItem[] = [
   },
   {
     title: 'Catálogo Online Fullstack',
-    image: 'Mi catalogo 03.jpg',
+    image: 'catalogo-fullstack.jpg',
     imageAlt: 'Catálogo Online Fullstack',
     description:
       'Plataforma fullstack en producción para gestión y visualización de productos, con autenticación, carrito de compras y panel administrativo. Arquitectura desacoplada desarrollada con Angular y NestJS, persistencia en PostgreSQL y despliegue dockerizado con dominio propio.',
@@ -134,7 +134,7 @@ export const PROJECTS: readonly ProjectItem[] = [
   },
   {
     title: 'Landing + Catálogo Estático',
-    image: 'landing2.jpg',
+    image: 'landing-react.jpg',
     imageAlt: 'Landing + catálogo estático en React',
     description:
       'Solución frontend orientada a catálogos comerciales, desarrollada con React, TypeScript y Vite. Diseño reutilizable con configuración dinámica de contenido y temas, optimizada para rendimiento, escalabilidad visual y experiencia responsive.',
