@@ -148,11 +148,11 @@ describe('Landing', () => {
     });
 
     it('REQ-8: el nav muestra Proyectos entre Experiencia y Contacto', () => {
-      const hrefs = Array.from(root.querySelectorAll('nav a[href^="#"]')).map((a) =>
+      const hrefs = Array.from(root.querySelectorAll('nav[aria-label="Principal"] a[href^="#"]')).map((a) =>
         a.getAttribute('href'),
       );
       expect(hrefs).toEqual(['#hero', '#about', '#experience', '#projects', '#contact']);
-      const labels = Array.from(root.querySelectorAll('nav a[href^="#"]')).map((a) => text(a));
+      const labels = Array.from(root.querySelectorAll('nav[aria-label="Principal"] a[href^="#"]')).map((a) => text(a));
       expect(labels[3]).toBe('Proyectos');
     });
 
@@ -268,6 +268,78 @@ describe('Landing', () => {
     it('REQ-14: muestra 8 tecnologías en el orden de la baseline', () => {
       const names = Array.from(root.querySelectorAll('#stack .group span')).map((s) => text(s));
       expect(names).toEqual(TECHNOLOGIES);
+    });
+  });
+
+  describe('accesibilidad', () => {
+    it('REQ-A1: no hay ids repetidos', () => {
+      const ids = Array.from(root.querySelectorAll('[id]')).map((el) => el.id);
+      expect(ids.filter((id, i) => ids.indexOf(id) !== i)).toEqual([]);
+    });
+
+    it('REQ-A2: los enlaces de LinkedIn y GitHub tienen nombre accesible', () => {
+      const linkedin = root.querySelector('#hero a[href*="linkedin.com"]');
+      const github = root.querySelector('#hero a[href="https://github.com/CristianEscequiel/"]');
+      expect(linkedin?.getAttribute('aria-label')).toBe('LinkedIn');
+      expect(github?.getAttribute('aria-label')).toBe('GitHub');
+    });
+
+    it('REQ-A3: el botón de bajar es un único enlace a #about con nombre', () => {
+      const links = root.querySelectorAll('#hero a[href="#about"]');
+      expect(links.length).toBe(1);
+      expect(links[0].getAttribute('aria-label')).toBe('Ir a Sobre mí');
+      expect(links[0].classList).toContain('btn');
+    });
+
+    it('REQ-A4: hay un único main con las secciones y sin el footer', () => {
+      const mains = root.querySelectorAll('main');
+      expect(mains.length).toBe(1);
+      const main = mains[0];
+      expect(main.id).toBe('main');
+      ['hero', 'about', 'experience', 'projects', 'stack', 'contact'].forEach((id) =>
+        expect(main.querySelector(`section#${id}`)).withContext(id).not.toBeNull(),
+      );
+      expect(main.querySelector('footer')).toBeNull();
+    });
+
+    it('REQ-A5: el primer elemento enfocable es el enlace para saltar al contenido', () => {
+      const first = root.querySelector('a[href], button, input, select, textarea');
+      expect(first?.getAttribute('href')).toBe('#main');
+      expect(text(first)).toBe('Saltar al contenido');
+    });
+
+    it('REQ-A6: las navegaciones tienen nombre', () => {
+      expect(root.querySelector('nav[aria-label="Principal"]')).not.toBeNull();
+      expect(root.querySelector('footer nav[aria-label="Pie de página"]')).not.toBeNull();
+    });
+
+    it('REQ-A7: la foto de perfil tiene texto alternativo descriptivo', () => {
+      expect(root.querySelector('#hero img')?.getAttribute('alt')).toBe(
+        'Foto de perfil de Escequiel Argüello',
+      );
+    });
+
+    it('REQ-A8: los SVG decorativos están ocultos para lectores de pantalla', () => {
+      const svgs = Array.from(root.querySelectorAll('nav svg, #experience svg'));
+      expect(svgs.length).toBeGreaterThan(0);
+      svgs.forEach((svg) => expect(svg.getAttribute('aria-hidden')).toBe('true'));
+    });
+
+    it('REQ-A9: el selector de tema muestra contorno al enfocarse', () => {
+      const label = root.querySelector('nav label.swap');
+      expect(label?.classList).toContain('focus-within:outline-2');
+    });
+
+    it('REQ-A10: el rebote del botón de bajar solo aplica con movimiento permitido', () => {
+      const button = root.querySelector('#hero a[href="#about"]');
+      expect(button?.classList).toContain('motion-safe:animate-bounce');
+      expect(button?.classList).not.toContain('animate-bounce');
+    });
+
+    it('REQ-A11: las imágenes de proyectos se cargan de forma diferida', () => {
+      const images = Array.from(root.querySelectorAll('#projects img'));
+      expect(images.length).toBe(2);
+      images.forEach((img) => expect(img.getAttribute('loading')).toBe('lazy'));
     });
   });
 });

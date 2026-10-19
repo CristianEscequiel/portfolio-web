@@ -1,5 +1,7 @@
 <div class="">
-  <nav
+  <a href="#main"
+    class="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]">Saltar al contenido</a>
+  <nav aria-label="Principal"
     class="navbar h-16 container mx-auto px-10 sticky top-0 z-50 border-b border-base-200 bg-base-100 justify-between">
     <span class="inline-flex items-center text-2xl font-semibold tracking-tight">
       <span class="bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500
@@ -13,29 +15,30 @@
       <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#experience"> Experiencia</a>
       <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#projects"> Proyectos</a>
       <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#contact"> Contacto</a>
-      <label class="swap swap-rotate">
+      <label class="swap swap-rotate rounded focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-primary">
         <input type="checkbox" aria-label="Cambiar entre tema claro y oscuro" [checked]="themeService.isDark()"
           (change)="onThemeChange($event)" />
 
         <!-- sol (light) -->
-        <svg class="swap-on h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg class="swap-on h-6 w-6 fill-current" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path
             d="M5.64 17.66L4.22 19.07 2.81 17.66 4.22 16.24 5.64 17.66ZM12 18a6 6 0 100-12 6 6 0 000 12Zm6.36-.34l1.41 1.41-1.41 1.41-1.41-1.41 1.41-1.41ZM12 22h-1v-2h2v2h-1ZM12 4h-1V2h2v2h-1ZM19.78 7.76l1.41-1.41 1.41 1.41-1.41 1.41-1.41-1.41ZM2.81 6.34 4.22 4.93l1.41 1.41L4.22 7.76 2.81 6.34ZM22 13h-2v-2h2v2ZM4 13H2v-2h2v2Z" />
         </svg>
 
         <!-- luna (dark) -->
-        <svg class="swap-off h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg class="swap-off h-6 w-6 fill-current" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M21.64 13a9 9 0 01-10.63-10.63 9 9 0 1010.63 10.63z" />
         </svg>
       </label>
     </div>
   </nav>
 
-  <div class="mx-auto">
+  <main id="main" tabindex="-1" class="mx-auto focus:outline-none">
 
     <section id="hero" class="hero min-h-[calc(100vh-4rem)] scroll-mt-20 mx-auto">
       <div class="hero-content flex-col lg:flex-row-reverse justify-center gap-10 lg:gap-20">
-        <img class="rounded-full w-80 h-80 lg:w-80 lg:h-80" src="profile2.jpg" alt="profile">
+        <img class="rounded-full w-80 h-80 lg:w-80 lg:h-80" src="profile2.jpg" width="320" height="320"
+          alt="Foto de perfil de Escequiel Argüello">
         <div class="align-middle">
           <h1 class="p-0 text-blue-400 font-bold
            text-6xl lg:text-8xl opacity-80">
@@ -47,32 +50,33 @@
           </p>
           <p class="text-md lg:text-lg line-clamp-6 text-sm opacity-70"
           >Angular · React · NestJS · PostgreSQL · Docker</p>
-          <section class="flex flex-row gap-x-2 lg:gap-x-4 mt-4" id="social">
+          <div class="flex flex-row gap-x-2 lg:gap-x-4 mt-4">
             <a class="btn btn-primary p-0 px-1" href="#projects">Ver proyectos</a>
             <a class="btn btn-outline p-0 px-1 " href="#contact">Contactame</a>
-          </section>
+          </div>
 
-          <section class="flex flex-row gap-x-2 lg:gap-x-4 mt-4" id="social">
+          <div class="flex flex-row gap-x-2 lg:gap-x-4 mt-4">
             <a class="btn btn-primary p-0 text-3xl" href="https://www.linkedin.com/in/cristian-arg%C3%BCello-18a1a31ab/"
-              target="_blank" rel="noopener noreferrer">
+              aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
               <fa-icon [icon]="faLinkedinIn"></fa-icon>
             </a>
 
             <a class="btn btn-primary text-3xl p-0" href="https://github.com/CristianEscequiel/" target="_blank"
-              rel="noopener noreferrer">
+              aria-label="GitHub" rel="noopener noreferrer">
               <fa-icon [icon]="faGithub"></fa-icon>
             </a>
             <a href="Cristian_Arguello_CV_FullStack.pdf" download class="btn btn-primary gap-2 ">
               <fa-icon [icon]="faDownload" class="text-2xl"></fa-icon>
               Descargar CV
             </a>
-          </section>
+          </div>
 
         </div>
       </div>
-      <div class="hidden btn btn-circle animate-bounce md:flex absolute bottom-4">
-        <a href="#about"><fa-icon [icon]="faChevronDown"></fa-icon></a>
-      </div>
+      <a href="#about" aria-label="Ir a Sobre mí"
+        class="hidden btn btn-circle motion-safe:animate-bounce md:flex absolute bottom-4">
+        <fa-icon [icon]="faChevronDown"></fa-icon>
+      </a>
     </section>
 
     <section class="container mx-auto py-16 scroll-mt-20 px-10 reveal" id="about">
@@ -111,7 +115,7 @@
               <hr />
             }
             <div class="timeline-middle">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5" aria-hidden="true">
                 <path fill-rule="evenodd"
                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
                   clip-rule="evenodd" />
@@ -160,7 +164,7 @@
               : 'card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300'">
             @if (project.image) {
               <figure class="aspect-video bg-base-300/40 flex items-center justify-center overflow-hidden">
-                <img [src]="project.image" [alt]="project.imageAlt">
+                <img [src]="project.image" [alt]="project.imageAlt" loading="lazy" decoding="async">
               </figure>
             }
 
@@ -230,7 +234,7 @@
       </div>
 
     </section>
-  </div>
+  </main>
 
   <footer class="border-t border-base-300 mt-20 py-8">
 
@@ -240,13 +244,13 @@
         © 2026 Escequiel Argüello
       </span>
 
-      <div class="flex gap-6">
+      <nav aria-label="Pie de página" class="flex gap-6">
         <a href="#hero" class="hover:text-primary transition">Inicio</a>
         <a href="#about" class="hover:text-primary transition">Sobre mi</a>
         <a href="#experience" class="hover:text-primary transition">Experiencia</a>
         <a href="#projects" class="hover:text-primary transition">Proyectos</a>
         <a href="#contact" class="hover:text-primary transition">Contacto</a>
-      </div>
+      </nav>
 
       <span>
         Desarrollado con Angular & Tailwind
