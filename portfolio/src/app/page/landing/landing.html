@@ -1,5 +1,7 @@
 <div class="">
-  <nav
+  <a href="#main"
+    class="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]">Saltar al contenido</a>
+  <nav aria-label="Principal"
     class="navbar h-16 container mx-auto px-10 sticky top-0 z-50 border-b border-base-200 bg-base-100 justify-between">
     <span class="inline-flex items-center text-2xl font-semibold tracking-tight">
       <span class="bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500
@@ -11,29 +13,32 @@
       <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#hero"> Inicio </a>
       <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#about"> Sobre mi</a>
       <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#experience"> Experiencia</a>
+      <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#projects"> Proyectos</a>
       <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#contact"> Contacto</a>
-      <label class="swap swap-rotate">
-        <input type="checkbox" [checked]="theme === 'business'" (change)="toggleTheme($event)" />
+      <label class="swap swap-rotate rounded focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-primary">
+        <input type="checkbox" aria-label="Cambiar entre tema claro y oscuro" [checked]="themeService.isDark()"
+          (change)="onThemeChange($event)" />
 
         <!-- sol (light) -->
-        <svg class="swap-on h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg class="swap-on h-6 w-6 fill-current" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path
             d="M5.64 17.66L4.22 19.07 2.81 17.66 4.22 16.24 5.64 17.66ZM12 18a6 6 0 100-12 6 6 0 000 12Zm6.36-.34l1.41 1.41-1.41 1.41-1.41-1.41 1.41-1.41ZM12 22h-1v-2h2v2h-1ZM12 4h-1V2h2v2h-1ZM19.78 7.76l1.41-1.41 1.41 1.41-1.41 1.41-1.41-1.41ZM2.81 6.34 4.22 4.93l1.41 1.41L4.22 7.76 2.81 6.34ZM22 13h-2v-2h2v2ZM4 13H2v-2h2v2Z" />
         </svg>
 
         <!-- luna (dark) -->
-        <svg class="swap-off h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg class="swap-off h-6 w-6 fill-current" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M21.64 13a9 9 0 01-10.63-10.63 9 9 0 1010.63 10.63z" />
         </svg>
       </label>
     </div>
   </nav>
 
-  <div class="mx-auto">
+  <main id="main" tabindex="-1" class="mx-auto focus:outline-none">
 
     <section id="hero" class="hero min-h-[calc(100vh-4rem)] scroll-mt-20 mx-auto">
       <div class="hero-content flex-col lg:flex-row-reverse justify-center gap-10 lg:gap-20">
-        <img class="rounded-full w-80 h-80 lg:w-80 lg:h-80" src="profile2.jpg" alt="profile">
+        <img class="rounded-full w-80 h-80 lg:w-80 lg:h-80" src="profile2.jpg" width="320" height="320"
+          alt="Foto de perfil de Escequiel Argüello">
         <div class="align-middle">
           <h1 class="p-0 text-blue-400 font-bold
            text-6xl lg:text-8xl opacity-80">
@@ -45,32 +50,33 @@
           </p>
           <p class="text-md lg:text-lg line-clamp-6 text-sm opacity-70"
           >Angular · React · NestJS · PostgreSQL · Docker</p>
-          <section class="flex flex-row gap-x-2 lg:gap-x-4 mt-4" id="social">
+          <div class="flex flex-row gap-x-2 lg:gap-x-4 mt-4">
             <a class="btn btn-primary p-0 px-1" href="#projects">Ver proyectos</a>
             <a class="btn btn-outline p-0 px-1 " href="#contact">Contactame</a>
-          </section>
+          </div>
 
-          <section class="flex flex-row gap-x-2 lg:gap-x-4 mt-4" id="social">
+          <div class="flex flex-row gap-x-2 lg:gap-x-4 mt-4">
             <a class="btn btn-primary p-0 text-3xl" href="https://www.linkedin.com/in/cristian-arg%C3%BCello-18a1a31ab/"
-              target="_blank" rel="noopener noreferrer">
+              aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
               <fa-icon [icon]="faLinkedinIn"></fa-icon>
             </a>
 
             <a class="btn btn-primary text-3xl p-0" href="https://github.com/CristianEscequiel/" target="_blank"
-              rel="noopener noreferrer">
+              aria-label="GitHub" rel="noopener noreferrer">
               <fa-icon [icon]="faGithub"></fa-icon>
             </a>
-            <a href="Escequiel-Arguello-FullStack-Developer-CV.pdf" download class="btn btn-primary gap-2 ">
+            <a href="Cristian_Arguello_CV_FullStack.pdf" download class="btn btn-primary gap-2 ">
               <fa-icon [icon]="faDownload" class="text-2xl"></fa-icon>
               Descargar CV
             </a>
-          </section>
+          </div>
 
         </div>
       </div>
-      <div class="hidden btn btn-circle animate-bounce md:flex absolute bottom-4">
-        <a href="#about"><fa-icon [icon]="faChevronDown"></fa-icon></a>
-      </div>
+      <a href="#about" aria-label="Ir a Sobre mí"
+        class="hidden btn btn-circle motion-safe:animate-bounce md:flex absolute bottom-4">
+        <fa-icon [icon]="faChevronDown"></fa-icon>
+      </a>
     </section>
 
     <section class="container mx-auto py-16 scroll-mt-20 px-10 reveal" id="about">
@@ -80,7 +86,9 @@
       </div>
       <p class="text-lg lg:text-2xl pt-10">
         Hola, soy Escequiel. Desarrollador con experiencia en entornos industriales,
-        donde aprendí a trabajar con métricas, eficiencia y validación constante de datos.
+        dentro del equipo de Ingeniería y Eficiencia de Procesos, donde aprendí a trabajar con
+        métricas, eficiencia y validación constante de datos. Aprendí que una solución no solo
+        tiene que ser útil: tiene que aportar un valor que se pueda medir.
       </p><br>
       <p class="text-lg lg:text-2xl">
         Hoy me desempeño como Full Stack Developer con fuerte enfoque en frontend.
@@ -94,213 +102,120 @@
       </p>
     </section>
 
-<section class="container mx-auto py-16 scroll-mt-20 px-10 reveal" id="experience">
-  <div class="text-center mb-12">
-    <h2 class="text-4xl lg:text-5xl font-bold">Experiencia</h2>
-    <div class="w-24 h-1 bg-primary mx-auto mt-3 rounded"></div>
-  </div>
-
-  <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
-
-    <li>
-      <div class="timeline-middle">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-          <path fill-rule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-            clip-rule="evenodd" />
-        </svg>
+    <section class="container mx-auto py-16 scroll-mt-20 px-10 reveal" id="experience">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl lg:text-5xl font-bold">Experiencia</h2>
+        <div class="w-24 h-1 bg-primary mx-auto mt-3 rounded"></div>
       </div>
-      <div class="timeline-start mb-10 md:text-end">
-        <time class="font-mono italic">Sep 2025 – Actualidad</time>
-        <div class="text-lg font-black">Full Stack Developer · Freelance</div>
-        <p class="mt-2">
-          Desarrollo soluciones web full stack, incluyendo catálogos tipo e-commerce,
-          APIs REST, autenticación y despliegue con Docker.
-        </p>
 
-        <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
-          <span class="badge badge-outline">Angular</span>
-          <span class="badge badge-outline">NestJS</span>
-          <span class="badge badge-outline">PostgreSQL</span>
-          <span class="badge badge-outline">Docker</span>
-          <span class="badge badge-outline">React</span>
-        </div>
+      <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+        @for (entry of experience; track $index; let i = $index, first = $first, last = $last) {
+          <li>
+            @if (!first) {
+              <hr />
+            }
+            <div class="timeline-middle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div [class]="i % 2 === 0 ? 'timeline-start mb-10 md:text-end' : 'timeline-end md:mb-10'">
+              @if (entry.company) {
+                <div class="company text-2xl font-black">{{ entry.company }}</div>
+                <div class="team opacity-70 mb-4">{{ entry.team }}</div>
+              }
+              @for (role of entry.roles; track role.period) {
+                <div class="role mb-6 last:mb-0">
+                  <time class="font-mono italic">{{ role.period }}</time>
+                  <div class="text-lg font-black">{{ role.title }}</div>
+                  @for (paragraph of role.paragraphs; track $index) {
+                    <p class="mt-2">{{ paragraph }}</p>
+                  }
+
+                  <div [class]="i % 2 === 0 ? 'mt-3 flex flex-wrap gap-2 md:justify-end' : 'mt-3 flex flex-wrap gap-2'">
+                    @for (tag of role.tags; track tag) {
+                      <span class="badge badge-outline">{{ tag }}</span>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+            @if (!last) {
+              <hr />
+            }
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section id="projects" class="container mx-auto px-6 py-16 scroll-mt-20 reveal">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl lg:text-5xl font-bold">Proyectos</h2>
+        <div class="w-24 h-1 bg-primary mx-auto mt-3 rounded"></div>
       </div>
-      <hr />
-    </li>
 
-    <li>
-      <hr />
-      <div class="timeline-middle">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-          <path fill-rule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-            clip-rule="evenodd" />
-        </svg>
+      <div class="grid gap-10 md:grid-cols-2">
+        @for (project of projects; track project.title) {
+          <article
+            [class]="project.featured
+              ? 'card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300 md:col-span-2'
+              : 'card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300'">
+            @if (project.image) {
+              <figure class="aspect-video bg-base-300/40 flex items-center justify-center overflow-hidden">
+                <img [src]="project.image" [alt]="project.imageAlt" loading="lazy" decoding="async">
+              </figure>
+            }
+
+            <div class="card-body">
+              <h3 class="card-title text-2xl">{{ project.title }}</h3>
+              <p class="opacity-80">{{ project.description }}</p>
+
+              <div class="mt-2 flex flex-wrap gap-2">
+                @for (tag of project.tags; track tag) {
+                  <span class="badge badge-outline">{{ tag }}</span>
+                }
+              </div>
+
+              <div class="card-actions mt-6 justify-center items-center">
+                <div class="flex items-center gap-3">
+                  @if (project.demoUrl) {
+                    <a class="btn btn-primary btn-sm" [href]="project.demoUrl" target="_blank" rel="noopener noreferrer">
+                      Ver demo
+                    </a>
+                  }
+                  <span [class]="'badge badge-ghost font-semibold border-2 py-4 rounded-md ' + project.statusClass">{{ project.status }}</span>
+                </div>
+
+                @for (link of project.links; track link.url) {
+                  <a class="btn btn-primary btn-sm" [href]="link.url" target="_blank" rel="noopener noreferrer">
+                    <fa-icon [icon]="faLink"></fa-icon>{{ link.label }}
+                  </a>
+                }
+              </div>
+            </div>
+          </article>
+        }
       </div>
-      <div class="timeline-end md:mb-10">
-        <time class="font-mono italic">Nov 2024 – Sep 2025</time>
-        <div class="text-lg font-black">Software Developer</div>
-        <div class="font-semibold">Pirelli Argentina</div>
-        <p class="mt-2">
-          Desarrollé aplicaciones de monitoreo y reportes con foco en KPIs operativos,
-          visibilidad en tiempo real y análisis de datos productivos.
-        </p>
+    </section>
 
-        <div class="mt-3 flex flex-wrap gap-2">
-          <span class="badge badge-outline">Python</span>
-          <span class="badge badge-outline">Pandas</span>
-          <span class="badge badge-outline">SQL</span>
-          <span class="badge badge-outline">KPIs</span>
-          <span class="badge badge-outline">Monitoreo</span>
-        </div>
+    <section class="container mx-auto px-6 py-16 scroll-mt-20 reveal" id="stack">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl lg:text-5xl font-bold">Tecnologías</h2>
+        <div class="w-24 h-1 bg-primary mx-auto mt-3 rounded"></div>
       </div>
-      <hr />
-    </li>
 
-    <li>
-      <hr />
-      <div class="timeline-middle">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-          <path fill-rule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-            clip-rule="evenodd" />
-        </svg>
-      </div>
-      <div class="timeline-start mb-10 md:text-end">
-        <time class="font-mono italic">Mar 2023 – Nov 2024</time>
-        <div class="text-lg font-black">Full Stack Developer</div>
-        <div class="font-semibold">Pirelli Argentina</div>
-        <p class="mt-2">
-          Construí aplicaciones internas con Angular, dashboards conectados a SQL
-          y automatizaciones con Python para optimizar procesos.
-        </p>
-
-        <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
-          <span class="badge badge-outline">Angular</span>
-          <span class="badge badge-outline">TypeScript</span>
-          <span class="badge badge-outline">PostgreSQL</span>
-          <span class="badge badge-outline">Python</span>
-          <span class="badge badge-outline">Dashboards</span>
-        </div>
-      </div>
-      <hr />
-    </li>
-
-    <li>
-      <hr />
-      <div class="timeline-middle">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-          <path fill-rule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-            clip-rule="evenodd" />
-        </svg>
-      </div>
-      <div class="timeline-end md:mb-10">
-        <time class="font-mono italic">Ago 2022 – Mar 2023</time>
-        <div class="text-lg font-black">Frontend Developer</div>
-        <div class="font-semibold">Pirelli Argentina</div>
-        <p class="mt-2">
-          Desarrollé interfaces en Angular para proyectos internos de digitalización,
-          mejorando flujos y experiencia de usuario.
-        </p>
-
-        <div class="mt-3 flex flex-wrap gap-2">
-          <span class="badge badge-outline">Angular</span>
-          <span class="badge badge-outline">TypeScript</span>
-          <span class="badge badge-outline">UI/UX</span>
-          <span class="badge badge-outline">Digitalización</span>
-        </div>
-      </div>
-    </li>
-
-  </ul>
-</section>
-
-<section id="projects" class="container mx-auto px-6 py-16 scroll-mt-20 reveal">
-  <div class="text-center mb-12">
-    <h2 class="text-4xl lg:text-5xl font-bold">Proyectos</h2>
-    <div class="w-24 h-1 bg-primary mx-auto mt-3 rounded"></div>
-  </div>
-
-  <div class="grid gap-10 md:grid-cols-2">
-
-    <article class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300">
-      <figure class="aspect-video bg-base-300/40 flex items-center justify-center overflow-hidden">
-        <img src="Mi catalogo 03.jpg" alt="Catálogo Online Fullstack">
-      </figure>
-
-      <div class="card-body">
-        <h3 class="card-title text-2xl">Catálogo Online Fullstack</h3>
-        <p class="opacity-80">
-          Plataforma fullstack en producción para gestión y visualización de productos, con autenticación,
-          carrito de compras y panel administrativo.
-          Arquitectura desacoplada desarrollada con Angular y NestJS, persistencia en PostgreSQL
-          y despliegue dockerizado con dominio propio.
-        </p>
-
-        <div class="mt-2 flex flex-wrap gap-2">
-          <span class="badge badge-outline">Angular</span>
-          <span class="badge badge-outline">TailwindCSS</span>
-          <span class="badge badge-outline">DaisyUI</span>
-          <span class="badge badge-outline">NestJS</span>
-          <span class="badge badge-outline">PostgreSQL</span>
-          <span class="badge badge-outline">Docker</span>
-        </div>
-
-        <div class="card-actions mt-6 justify-center items-center">
-          <div class="flex items-center gap-3">
-            <a class="btn btn-primary btn-sm" href="https://catalog.esceweb.com/home" target="_blank" rel="noopener noreferrer">
-              Ver demo
-            </a>
-            <span class="badge badge-ghost border-success text-success font-semibold border-2 py-4 rounded-md">En producción</span>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-10 text-center">
+        @for (tech of technologies; track tech.name) {
+          <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
+            <fa-icon class="text-5xl transition-colors duration-300" [class]="tech.hoverClass"
+              [icon]="tech.icon"></fa-icon>
+            <span class="text-sm opacity-80 group-hover:opacity-100">{{ tech.name }}</span>
           </div>
-
-          <a class="btn btn-primary btn-sm" href="https://github.com/CristianEscequiel/mi-catalogo-online/" target="_blank" rel="noopener noreferrer">
-            <fa-icon [icon]="faLink"></fa-icon>GitHub
-          </a>
-        </div>
+        }
       </div>
-    </article>
-
-    <article class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition duration-300">
-      <figure class="aspect-video bg-base-300/40 flex items-center justify-center overflow-hidden">
-        <img src="landing2.jpg" alt="Landing + catálogo estático en React">
-      </figure>
-
-      <div class="card-body">
-        <h3 class="card-title text-2xl">Landing + Catálogo Estático</h3>
-        <p class="opacity-80">
-          Solución frontend orientada a catálogos comerciales, desarrollada con React, TypeScript y Vite.
-          Diseño reutilizable con configuración dinámica de contenido y temas, optimizada para
-          rendimiento, escalabilidad visual y experiencia responsive.
-        </p>
-
-        <div class="mt-2 flex flex-wrap gap-2">
-          <span class="badge badge-outline">React</span>
-          <span class="badge badge-outline">TypeScript</span>
-          <span class="badge badge-outline">Vite</span>
-          <span class="badge badge-outline">TailwindCSS</span>
-          <span class="badge badge-outline">React Router</span>
-        </div>
-
-        <div class="card-actions mt-6 justify-center items-center">
-          <div class="flex items-center gap-3">
-            <a class="btn btn-primary btn-sm" href="https://landing.esceweb.com" target="_blank" rel="noopener noreferrer">
-              Ver demo
-            </a>
-            <span class="badge badge-ghost border-success text-success font-semibold border-2 py-4 rounded-md">En producción</span>
-          </div>
-
-          <a class="btn btn-primary btn-sm" href="https://github.com/CristianEscequiel/catalog-react" target="_blank" rel="noopener noreferrer">
-            <fa-icon [icon]="faLink"></fa-icon>GitHub
-          </a>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
+    </section>
 
     <section id="contact" class="container mx-auto px-6 py-16 scroll-mt-20 reveal">
       <div class="text-center mb-12">
@@ -319,65 +234,7 @@
       </div>
 
     </section>
-
-    <section class="container mx-auto px-6 py-16 scroll-mt-20 reveal" id="stack">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl lg:text-5xl font-bold">Tecnologías</h2>
-        <div class="w-24 h-1 bg-primary mx-auto mt-3 rounded"></div>
-      </div>
-
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-10 text-center">
-
-        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
-          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-orange-500"
-            [icon]="faHtml5"></fa-icon>
-          <span class="text-sm opacity-80 group-hover:opacity-100">HTML</span>
-        </div>
-
-        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
-          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-yellow-400" [icon]="faJs"></fa-icon>
-          <span class="text-sm opacity-80 group-hover:opacity-100">JavaScript</span>
-        </div>
-
-        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
-          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-blue-500" [icon]="faCss"></fa-icon>
-          <span class="text-sm opacity-80 group-hover:opacity-100">CSS</span>
-        </div>
-
-        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
-          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-sky-400"
-            [icon]="faTailwindCss"></fa-icon>
-          <span class="text-sm opacity-80 group-hover:opacity-100">Tailwind</span>
-        </div>
-
-        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
-          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-red-500"
-            [icon]="faAngular"></fa-icon>
-          <span class="text-sm opacity-80 group-hover:opacity-100">Angular</span>
-        </div>
-
-        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
-          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-blue-400"
-            [icon]="faPostgresql"></fa-icon>
-          <span class="text-sm opacity-80 group-hover:opacity-100">PostgreSQL</span>
-        </div>
-
-        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
-          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-green-500"
-            [icon]="faNodeJs"></fa-icon>
-          <span class="text-sm opacity-80 group-hover:opacity-100">NodeJS</span>
-        </div>
-
-        <div class="group flex flex-col items-center gap-2 transition-transform duration-300 hover:-translate-y-2">
-          <fa-icon class="text-5xl transition-colors duration-300 group-hover:text-yellow-500"
-            [icon]="faPython"></fa-icon>
-          <span class="text-sm opacity-80 group-hover:opacity-100">Python</span>
-        </div>
-
-      </div>
-
-    </section>
-  </div>
+  </main>
 
   <footer class="border-t border-base-300 mt-20 py-8">
 
@@ -387,12 +244,13 @@
         © 2026 Escequiel Argüello
       </span>
 
-      <div class="flex gap-6">
-        <a href=" #hero" class="hover:text-primary transition">Inicio</a>
-        <a href=" #about" class="hover:text-primary transition">Sobre mi</a>
-        <a href=" #experience" class="hover:text-primary transition">Experiencia</a>
-        <a href=" #contact" class="hover:text-primary transition">Contacto</a>
-      </div>
+      <nav aria-label="Pie de página" class="flex gap-6">
+        <a href="#hero" class="hover:text-primary transition">Inicio</a>
+        <a href="#about" class="hover:text-primary transition">Sobre mi</a>
+        <a href="#experience" class="hover:text-primary transition">Experiencia</a>
+        <a href="#projects" class="hover:text-primary transition">Proyectos</a>
+        <a href="#contact" class="hover:text-primary transition">Contacto</a>
+      </nav>
 
       <span>
         Desarrollado con Angular & Tailwind
