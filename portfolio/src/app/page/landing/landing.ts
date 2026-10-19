@@ -1,83 +1,34 @@
-import { AfterViewInit, Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faChevronDown, faDownload, faLink } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { ThemeService } from '../../core/theme.service';
+import { Reveal } from '../../shared/reveal';
 import { ContactForm } from '../contact/contact-form';
-import {
-  faArrowUp,
-  faChevronDown,
-  faLink,
-  faDownload,
-} from '@fortawesome/free-solid-svg-icons';
-import {
-        faGithub , faLinkedinIn,
-        faJs ,faHtml5 ,
-        faCss3 , faAngular ,
-        faPostgresql ,
-        faNodeJs, faPython ,
-        faTailwindCss
-        } from '@fortawesome/free-brands-svg-icons';
+import { EXPERIENCE, PROJECTS, TECHNOLOGIES } from './landing.data';
 
 @Component({
   selector: 'app-landing',
-  standalone:true,
-  imports: [FontAwesomeModule, ContactForm],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [FontAwesomeModule, ContactForm, Reveal],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './landing.html',
 })
-export class Landing implements OnInit, AfterViewInit {
-  faArrowUp = faArrowUp;
-  faGithub = faGithub;
-  faLinkedinIn = faLinkedinIn;
-  faJs = faJs ;
-  faHtml5 = faHtml5 ;
-  faCss = faCss3;
-  faAngular = faAngular ;
-  faPostgresql = faPostgresql;
-  faNodeJs = faNodeJs;
-  faPython = faPython;
-  faTailwindCss = faTailwindCss
-  faChevronDown = faChevronDown
-  faLink = faLink
-  faDownload = faDownload
+export class Landing {
+  protected readonly themeService = inject(ThemeService);
+
+  readonly faGithub = faGithub;
+  readonly faLinkedinIn = faLinkedinIn;
+  readonly faChevronDown = faChevronDown;
+  readonly faLink = faLink;
+  readonly faDownload = faDownload;
 
   readonly email = 'esce.arguello21@gmail.com';
 
-  theme: string = 'business'
+  readonly experience = EXPERIENCE;
+  readonly projects = PROJECTS;
+  readonly technologies = TECHNOLOGIES;
 
- ngOnInit() {
-  const saved = localStorage.getItem('theme');
-  if (saved === 'corporate' || saved === 'business') {
-    this.theme = saved;
-  } else {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    this.theme = prefersDark ? 'business' : 'corporate';
+  onThemeChange(event: Event): void {
+    this.themeService.setDark((event.target as HTMLInputElement).checked);
   }
-  this.applyTheme(this.theme);
-}
-
-toggleTheme(ev: Event) {
-  const checked = (ev.target as HTMLInputElement).checked;
-  this.theme = checked ? 'business' : 'corporate';
-  localStorage.setItem('theme', this.theme);
-  this.applyTheme(this.theme);
-}
-
-private applyTheme(theme: string) {
-  document.documentElement.setAttribute('data-theme', theme);
-}
-
-ngAfterViewInit() {
-  const items = document.querySelectorAll('.reveal');
-
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-visible');
-        io.unobserve(e.target);
-      }
-    }
-  }, { threshold: 0.12 });
-
-  items.forEach(el => io.observe(el));
-}
-
 }
