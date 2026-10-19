@@ -1,6 +1,6 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { API_BASE_URL } from '../../core/api-base-url.token';
 import {
   CONTACT_REQUEST_TIMEOUT_MS,
@@ -23,7 +23,7 @@ describe('ContactApiService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideHttpClient(),
+        provideHttpClient(withXhr()),
         provideHttpClientTesting(),
         { provide: API_BASE_URL, useValue: 'https://api.test/api' },
       ],
@@ -114,16 +114,21 @@ describe('ContactApiService', () => {
     expect(result).toEqual({ kind: 'network' });
   });
 
-  it('cancela la petición y devuelve timeout a los 15 segundos sin respuesta', fakeAsync(() => {
-    let result: ContactError | undefined;
-    service.send(payload).subscribe({ error: (e: ContactError) => (result = e) });
-    const req = http.expectOne('https://api.test/api/contact');
+  describe('con reloj simulado', () => {
+    beforeEach(() => jasmine.clock().install());
+    afterEach(() => jasmine.clock().uninstall());
 
-    tick(CONTACT_REQUEST_TIMEOUT_MS - 1);
-    expect(result).toBeUndefined();
+    it('cancela la petición y devuelve timeout a los 15 segundos sin respuesta', () => {
+      let result: ContactError | undefined;
+      service.send(payload).subscribe({ error: (e: ContactError) => (result = e) });
+      const req = http.expectOne('https://api.test/api/contact');
 
-    tick(1);
-    expect(result).toEqual({ kind: 'timeout' });
-    expect(req.cancelled).toBeTrue();
-  }));
+      jasmine.clock().tick(CONTACT_REQUEST_TIMEOUT_MS - 1);
+      expect(result).toBeUndefined();
+
+      jasmine.clock().tick(1);
+      expect(result).toEqual({ kind: 'timeout' });
+      expect(req.cancelled).toBeTrue();
+    });
+  });
 });

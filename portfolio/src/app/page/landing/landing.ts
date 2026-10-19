@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ContactForm } from '../contact/contact-form';
 import {
@@ -20,6 +20,7 @@ import {
   selector: 'app-landing',
   standalone:true,
   imports: [FontAwesomeModule, ContactForm],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './landing.html',
 })
 export class Landing implements OnInit, AfterViewInit {
