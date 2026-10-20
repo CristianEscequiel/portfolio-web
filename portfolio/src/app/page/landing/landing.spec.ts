@@ -66,16 +66,17 @@ const ABOUT_FIRST_PARAGRAPH =
 const PROJECTS = [
   {
     title: 'CMMS · Gestión de órdenes de mantenimiento',
-    image: null,
+    image: 'cmms.jpg',
     description:
       'Solución para la gestión integral de órdenes de mantenimiento, en evolución continua. Frontend en Angular con autenticación JWT, roles (administrador, team leader, técnico y producción), maestro de máquinas con árbol de partes, y flujo de tomar, cerrar y liberar órdenes. Backend propio en Spring Boot con PostgreSQL, donde el servidor es la autoridad de roles y transiciones de estado. Desarrollado con spec-driven development, dejando registro de cada decisión técnica.',
     tags: ['Angular', 'TypeScript', 'Signals', 'Spring Boot', 'PostgreSQL', 'JWT', 'Docker'],
     status: 'En desarrollo',
     links: [
+      'https://lab.esceweb.com/dashboard',
       'https://github.com/CristianEscequiel/angular-enterprise-lab',
       'https://github.com/CristianEscequiel/angular-enterprise-lab-api',
     ],
-    linkLabels: ['GitHub · Frontend', 'GitHub · API'],
+    linkLabels: ['Ver demo', 'GitHub · Frontend', 'GitHub · API'],
   },
   {
     title: 'Catálogo Online Fullstack',
@@ -264,6 +265,37 @@ describe('Landing', () => {
     });
   });
 
+  describe('cmms: imagen, demo y grilla', () => {
+    const cmms = () => root.querySelector('#projects article') as HTMLElement;
+
+    it('REQ-C1: la tarjeta del CMMS muestra cmms.jpg con alt descriptivo y carga diferida', () => {
+      const img = cmms().querySelector('figure img');
+      expect(img?.getAttribute('src')).toBe('cmms.jpg');
+      expect(img?.getAttribute('alt')).toContain('CMMS');
+      expect(img?.getAttribute('loading')).toBe('lazy');
+    });
+
+    it('REQ-C2: Ver demo del CMMS apunta al lab, seguro y antes de los enlaces de GitHub', () => {
+      const links = Array.from(cmms().querySelectorAll('a[href]'));
+      expect(text(links[0])).toBe('Ver demo');
+      expect(links[0].getAttribute('href')).toBe('https://lab.esceweb.com/dashboard');
+      expect(links[0].getAttribute('rel')).toBe('noopener noreferrer');
+      expect(links[0].getAttribute('target')).toBe('_blank');
+    });
+
+    it('REQ-C3: en pantalla grande la grilla tiene 3 columnas y ninguna tarjeta ocupa todo el ancho', () => {
+      const grid = root.querySelector('#projects .grid') as HTMLElement;
+      expect(grid.classList).toContain('lg:grid-cols-3');
+      expect(cmms().classList).toContain('lg:col-span-1');
+    });
+
+    it('REQ-C4: en pantalla mediana la grilla conserva 2 columnas con el CMMS a todo el ancho', () => {
+      const grid = root.querySelector('#projects .grid') as HTMLElement;
+      expect(grid.classList).toContain('md:grid-cols-2');
+      expect(cmms().classList).toContain('md:col-span-2');
+    });
+  });
+
   describe('tecnologías', () => {
     it('REQ-14: muestra 8 tecnologías en el orden de la baseline', () => {
       const names = Array.from(root.querySelectorAll('#stack .group span')).map((s) => text(s));
@@ -338,7 +370,7 @@ describe('Landing', () => {
 
     it('REQ-A11: las imágenes de proyectos se cargan de forma diferida', () => {
       const images = Array.from(root.querySelectorAll('#projects img'));
-      expect(images.length).toBe(2);
+      expect(images.length).toBe(3);
       images.forEach((img) => expect(img.getAttribute('loading')).toBe('lazy'));
     });
   });
