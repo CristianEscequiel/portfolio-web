@@ -109,11 +109,14 @@ const STATUS_DEVELOPMENT = 'border-warning text-warning';
 export const PROJECTS: readonly ProjectItem[] = [
   {
     title: 'CMMS · Gestión de órdenes de mantenimiento',
+    image: 'cmms.jpg',
+    imageAlt: 'Panel del CMMS para la gestión de órdenes de mantenimiento',
     description:
       'Solución para la gestión integral de órdenes de mantenimiento, en evolución continua. Frontend en Angular con autenticación JWT, roles (administrador, team leader, técnico y producción), maestro de máquinas con árbol de partes, y flujo de tomar, cerrar y liberar órdenes. Backend propio en Spring Boot con PostgreSQL, donde el servidor es la autoridad de roles y transiciones de estado. Desarrollado con spec-driven development, dejando registro de cada decisión técnica.',
     tags: ['Angular', 'TypeScript', 'Signals', 'Spring Boot', 'PostgreSQL', 'JWT', 'Docker'],
     status: 'En desarrollo',
     statusClass: STATUS_DEVELOPMENT,
+    demoUrl: 'https://lab.esceweb.com/dashboard',
     links: [
       { label: 'GitHub · Frontend', url: 'https://github.com/CristianEscequiel/angular-enterprise-lab' },
       { label: 'GitHub · API', url: 'https://github.com/CristianEscequiel/angular-enterprise-lab-api' },
