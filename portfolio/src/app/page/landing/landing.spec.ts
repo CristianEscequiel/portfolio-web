@@ -374,4 +374,81 @@ describe('Landing', () => {
       images.forEach((img) => expect(img.getAttribute('loading')).toBe('lazy'));
     });
   });
+
+  describe('menú móvil', () => {
+    const toggle = () => root.querySelector('nav[aria-label="Principal"] #menu-toggle') as HTMLElement;
+    const menu = () => root.querySelector('nav[aria-label="Principal"] #menu-principal') as HTMLElement;
+    const links = () =>
+      Array.from(menu().querySelectorAll('a[href^="#"]')) as HTMLAnchorElement[];
+    const click = (el: HTMLElement) => {
+      el.click();
+      fixture.detectChanges();
+    };
+
+    it('REQ-2.1: el nav tiene un botón de menú que controla menu-principal', () => {
+      expect(toggle()).not.toBeNull();
+      expect(toggle().tagName).toBe('BUTTON');
+      expect(toggle().getAttribute('aria-controls')).toBe('menu-principal');
+      expect(toggle().getAttribute('aria-label')).toBe('Menú principal');
+      expect(menu()).not.toBeNull();
+    });
+
+    it('REQ-2.2: con el menú cerrado el botón declara aria-expanded="false"', () => {
+      expect(toggle().getAttribute('aria-expanded')).toBe('false');
+    });
+
+    it('REQ-2.3: con el menú cerrado el contenedor de los 5 enlaces está oculto', () => {
+      expect(menu().classList).toContain('hidden');
+      expect(links().length).toBe(5);
+    });
+
+    it('REQ-2.4: al activar el botón se muestran los 5 enlaces en orden', () => {
+      click(toggle());
+      expect(menu().classList).not.toContain('hidden');
+      expect(links().map((a) => text(a))).toEqual([
+        'Inicio',
+        'Sobre mi',
+        'Experiencia',
+        'Proyectos',
+        'Contacto',
+      ]);
+      expect(links().map((a) => a.getAttribute('href'))).toEqual([
+        '#hero',
+        '#about',
+        '#experience',
+        '#projects',
+        '#contact',
+      ]);
+    });
+
+    it('REQ-2.5: al activar el botón aria-expanded pasa a "true"', () => {
+      click(toggle());
+      expect(toggle().getAttribute('aria-expanded')).toBe('true');
+    });
+
+    it('REQ-2.7: al activar un enlace del menú abierto el menú se cierra', () => {
+      for (let i = 0; i < 5; i++) {
+        click(toggle());
+        expect(toggle().getAttribute('aria-expanded')).withContext(`abrir ${i}`).toBe('true');
+        click(links()[i]);
+        expect(toggle().getAttribute('aria-expanded')).withContext(`enlace ${i}`).toBe('false');
+        expect(menu().classList).withContext(`enlace ${i}`).toContain('hidden');
+      }
+    });
+
+    it('REQ-2.8: con el menú abierto, un segundo clic en el botón lo cierra', () => {
+      click(toggle());
+      click(toggle());
+      expect(toggle().getAttribute('aria-expanded')).toBe('false');
+      expect(menu().classList).toContain('hidden');
+    });
+
+    it('REQ-2.4: los 5 enlaces siguen en el DOM, en orden, dentro del nav principal', () => {
+      const hrefs = Array.from(root.querySelectorAll('nav[aria-label="Principal"] a[href^="#"]')).map(
+        (a) => a.getAttribute('href'),
+      );
+      expect(hrefs).toEqual(['#hero', '#about', '#experience', '#projects', '#contact']);
+      expect(menu()).not.toBeNull();
+    });
+  });
 });

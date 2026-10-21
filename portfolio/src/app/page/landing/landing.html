@@ -2,7 +2,7 @@
   <a href="#main"
     class="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]">Saltar al contenido</a>
   <nav aria-label="Principal"
-    class="navbar h-16 container mx-auto px-10 sticky top-0 z-50 border-b border-base-200 bg-base-100 justify-between">
+    class="navbar h-16 container mx-auto px-4 md:px-10 sticky top-0 z-50 border-b border-base-200 bg-base-100 justify-between">
     <span class="inline-flex items-center text-2xl font-semibold tracking-tight">
       <span class="bg-linear-to-r from-sky-400 via-blue-500 to-indigo-500
            bg-clip-text text-transparent font-extrabold">SC</span>
@@ -10,12 +10,21 @@
       <span class="font-semibold">Dev</span>
     </span>
     <div class="flex items-center sm:text-sm gap-2 md:gap-4">
-      <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#hero"> Inicio </a>
-      <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#about"> Sobre mi</a>
-      <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#experience"> Experiencia</a>
-      <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#projects"> Proyectos</a>
-      <a class="border-b border-transparent hover:border-accent text-xs lg:text-lg" href="#contact"> Contacto</a>
-      <label class="swap swap-rotate rounded focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-primary">
+      <!-- order-last: va primero en el DOM (el foco pasa del botón a los enlaces) pero se ve a la derecha -->
+      <button id="menu-toggle" type="button" class="btn btn-ghost btn-square order-last h-11 w-11 min-h-11 md:hidden"
+        aria-controls="menu-principal" [attr.aria-expanded]="menuOpen()" aria-label="Menú principal"
+        (click)="toggleMenu()">
+        <fa-icon [icon]="menuOpen() ? faXmark : faBars"></fa-icon>
+      </button>
+      <div id="menu-principal" [class.hidden]="!menuOpen()" [class.flex]="menuOpen()"
+        class="absolute inset-x-0 top-full flex-col gap-1 border-b border-base-200 bg-base-100 px-4 py-2 md:static md:flex md:flex-row md:items-center md:gap-4 md:border-0 md:bg-transparent md:p-0">
+        <a class="flex min-h-11 items-center border-b border-transparent hover:border-accent text-base md:min-h-0 md:text-xs lg:text-lg" href="#hero" (click)="closeMenu()"> Inicio </a>
+        <a class="flex min-h-11 items-center border-b border-transparent hover:border-accent text-base md:min-h-0 md:text-xs lg:text-lg" href="#about" (click)="closeMenu()"> Sobre mi</a>
+        <a class="flex min-h-11 items-center border-b border-transparent hover:border-accent text-base md:min-h-0 md:text-xs lg:text-lg" href="#experience" (click)="closeMenu()"> Experiencia</a>
+        <a class="flex min-h-11 items-center border-b border-transparent hover:border-accent text-base md:min-h-0 md:text-xs lg:text-lg" href="#projects" (click)="closeMenu()"> Proyectos</a>
+        <a class="flex min-h-11 items-center border-b border-transparent hover:border-accent text-base md:min-h-0 md:text-xs lg:text-lg" href="#contact" (click)="closeMenu()"> Contacto</a>
+      </div>
+      <label class="swap swap-rotate h-11 w-11 rounded focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-primary">
         <input type="checkbox" aria-label="Cambiar entre tema claro y oscuro" [checked]="themeService.isDark()"
           (change)="onThemeChange($event)" />
 
@@ -40,8 +49,8 @@
         <img class="rounded-full w-80 h-80 lg:w-80 lg:h-80" src="profile2.jpg" width="320" height="320"
           alt="Foto de perfil de Escequiel Argüello">
         <div class="align-middle">
-          <h1 class="p-0 text-blue-400 font-bold
-           text-6xl lg:text-8xl opacity-80">
+          <h1 class="p-0 text-blue-700 in-data-[theme=business]:text-blue-400 font-bold
+           text-6xl lg:text-8xl">
           Escequiel <span class="text-secondary">Argüello</span>
           </h1>
           <h2 class="text-2xl lg:text-3xl mt-4 text-secondary font-semibold"> Full Stack Developer con foco en Frontend </h2>

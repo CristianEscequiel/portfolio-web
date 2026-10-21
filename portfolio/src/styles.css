@@ -4,6 +4,11 @@
    themes: corporate --default, business --prefersdark ;
  }
 
+/* Contraste modo claro: primary más oscuro; blanco sobre este azul ≈ 4.96:1 (WCAG AA) */
+[data-theme='corporate'] {
+  --color-primary: oklch(54% 0.15 245);
+}
+
  .reveal {
   opacity: 0;
   transform: translateY(14px);
